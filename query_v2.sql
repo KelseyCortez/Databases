@@ -39,7 +39,15 @@ SELECT name, COUNT(review)
 FROM review INNER JOIN restaurant
 ON restaurant.id = review.restaurant_id
 GROUP BY name;
-List all the reviews along with the restaurant, and the reviewer's name. The result should have the restaurant name, the review text, and the reviewer name. Hint: you will need to do a three-way join - i.e. joining all three tables together.
+
+List all the reviews along with the restaurant, and the reviewers name. The result should have the restaurant name, the review text, and the reviewer name. Hint: you will need to do a three-way join - i.e. joining all three tables together.
+
+SELECT review, restaurant.name, reviewer.name
+FROM review 
+INNER JOIN restaurant
+ON review.restaurant_id = restaurant.id
+INNER JOIN reviewer 
+ON reviewer.id = review.id;
 
 Get the average stars given by each reviewer. (reviewer name, average star rating)
 Get the lowest star rating given by each reviewer. (reviewer name, lowest star rating)
